@@ -1,0 +1,35 @@
+version: "3"
+services:
+  bot:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  pg:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./src/db/dumps:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: maksakov1988@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin2208
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - pg
+
+volumes:
+  pg-data:
+    driver: local
+  pgadmin-data:
+    driver: local
