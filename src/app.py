@@ -1,13 +1,8 @@
-from os import getenv
-from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 
+from src.db.config import TOKEN
 from src.handlers.start import router as start
-
-load_dotenv()
-
-TOKEN = getenv("TELEGRAM_BOT_TOKEN")
 
 async def main() -> None:
 

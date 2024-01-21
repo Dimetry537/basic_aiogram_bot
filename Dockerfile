@@ -14,6 +14,7 @@ RUN apk add postgresql-dev python3-dev musl-dev
 RUN apk add libxml2-dev libxslt-dev
 RUN apk add make
 RUN apk add git
+RUN apk add bash
 RUN pip install --upgrade "pip==$PIP_VERSION" && pip install "poetry==$POETRY_VERSION"
 
 WORKDIR /app

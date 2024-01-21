@@ -11,8 +11,8 @@ from alembic import context
 sys.path.append(os.path.join(sys.path[0], 'src'))
 
 from src.db.config import DB_HOST, DB_PORT, DB_PASS, DB_NAME, DB_USER
-
-from src.models import *
+from src.db.base import Base
+from src.models.users import User
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
